@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'idea'
+    //id 'com.github.johnrengelman.shadow' version '7.1.1'
+}
+
+group 'fr.dynalexotron.dynaddon'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url "https://maven.enginehub.org/repo/"
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compileOnly group: 'org.spigotmc', name: 'spigot', version: '1.8.8-R0.1-SNAPSHOT', changing: true
+    implementation 'com.github.Ph1Lou:WereWolfAPI:1.8_jitpack-SNAPSHOT'
+}
