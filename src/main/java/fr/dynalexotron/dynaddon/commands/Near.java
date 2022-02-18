@@ -1,6 +1,7 @@
 package fr.dynalexotron.dynaddon.commands;
 
 import fr.ph1lou.werewolfapi.commands.ICommand;
+import fr.ph1lou.werewolfapi.enums.Prefix;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -21,7 +22,7 @@ public class Near implements ICommand {
                 .collect(Collectors.toList());
 
         if(players.isEmpty()) {
-            player.sendMessage(game.translate("dynaddon.commands.near.no_players"));
+            player.sendMessage(game.translate(Prefix.RED.getKey(), "dynaddon.commands.near.no_players"));
             return;
         }
 
