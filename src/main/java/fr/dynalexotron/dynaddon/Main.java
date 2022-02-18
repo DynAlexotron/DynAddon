@@ -1,5 +1,6 @@
 package fr.dynalexotron.dynaddon;
 
+import fr.dynalexotron.dynaddon.commands.Near;
 import fr.dynalexotron.dynaddon.commands.TpLoin;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.enums.StateGame;
@@ -19,6 +20,11 @@ public class Main extends JavaPlugin {
         registerManager.registerAddon(new AddonRegister(this.addonKey, "fr", this));
 
         registerManager.registerAdminCommands(new CommandRegister(this.addonKey, "dynaddon.commands.tploin.name", new TpLoin())
+                .setHostAccess()
+                .setModeratorAccess()
+                .addStateWW(StateGame.GAME)
+        );
+        registerManager.registerAdminCommands(new CommandRegister(this.addonKey, "dynaddon.commands.near.name", new Near())
                 .setHostAccess()
                 .setModeratorAccess()
                 .addStateWW(StateGame.GAME)
