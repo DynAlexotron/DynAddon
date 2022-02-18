@@ -18,14 +18,14 @@
     "roles": {
       "bouffon": {
         "name": "Bouffon",
-        "description": "Vous recevez une cible du village. Si vous vous faites tuer apr cette cible, vous ressucitez avec",
+        "description": "Vous recevrez une cible du camp du village. Si vous vous faites tuer par cette cible, vous ressucitez avec 3 coeurs supplémentaire et l'effet force de façon permanente",
         "power": "§fRespawn : &available&",
         "available": "§2Disponible",
         "unavailable": "§cIndisponible",
-        "target_not_defined_yet": "",
+        "target_not_defined_yet": "§fVotre cible n'est pas encore définie",
         "target": "§fCible : §b%player%",
         "target_reveal": "§fVotre cible est §b&player&",
-        "get_killed": "§fVous vous êtes fait tuer par votre cible. Vous gagner donc les effets suivants jusque la fin de la partie : §b"
+        "get_killed": "§fVous vous êtes fait tuer par votre cible. Vous gagner donc les effets suivants jusque la fin de la partie : §b+3 coeurs, force"
       }
     },
     "timers": {
