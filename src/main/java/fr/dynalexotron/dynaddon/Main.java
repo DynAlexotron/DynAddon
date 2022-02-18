@@ -2,11 +2,18 @@ package fr.dynalexotron.dynaddon;
 
 import fr.dynalexotron.dynaddon.commands.Near;
 import fr.dynalexotron.dynaddon.commands.TpLoin;
+import fr.dynalexotron.dynaddon.roles.Bouffon;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
+import fr.ph1lou.werewolfapi.enums.Category;
 import fr.ph1lou.werewolfapi.enums.StateGame;
+import fr.ph1lou.werewolfapi.enums.TimerBase;
+import fr.ph1lou.werewolfapi.events.roles.elder.ElderResurrectionEvent;
 import fr.ph1lou.werewolfapi.registers.impl.AddonRegister;
 import fr.ph1lou.werewolfapi.registers.impl.CommandRegister;
+import fr.ph1lou.werewolfapi.registers.impl.RoleRegister;
+import fr.ph1lou.werewolfapi.registers.impl.TimerRegister;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegisterManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -18,6 +25,23 @@ public class Main extends JavaPlugin {
         IRegisterManager registerManager = ww.getRegisterManager();
 
         registerManager.registerAddon(new AddonRegister(this.addonKey, "fr", this));
+
+        try {
+            registerManager.registerRole(new RoleRegister(this.addonKey, "dynaddon.roles.bouffon.name", Bouffon.class)
+                    .addCategory(Category.ADDONS)
+                    .addCategory(Category.NEUTRAL)
+                    .addLoreKey("dynaddon.dev_by")
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        registerManager.registerTimer(new TimerRegister(this.addonKey, "dynaddon.timers.bouffon")
+                .onZero(api -> Bukkit.getPluginManager().callEvent(new Bouffon.BouffonTargetEvent()))
+                .setRoleTimer("dynaddon.roles.bouffon.name")
+                .setDefaultValue(5*60)
+                .addPredicate(api -> api.getConfig().getTimerValue(TimerBase.ROLE_DURATION.getKey()) < 0 && !api.getConfig().isTrollSV())
+        );
 
         registerManager.registerAdminCommands(new CommandRegister(this.addonKey, "dynaddon.commands.tploin.name", new TpLoin())
                 .setHostAccess()

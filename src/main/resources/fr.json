@@ -1,6 +1,7 @@
 {
   "dynaddon": {
     "name": "DynAddon",
+    "dev_by": "Développé par DynAlexotron",
     "commands": {
       "tploin": {
         "name": "tploin",
@@ -13,6 +14,22 @@
         "list_title": "§fListe des joueurs à moins de §b&size& §fblocs :",
         "player": "§b&player& §f: §b&number& blocs"
       }
+    },
+    "roles": {
+      "bouffon": {
+        "name": "Bouffon",
+        "description": "Vous recevez une cible du village. Si vous vous faites tuer apr cette cible, vous ressucitez avec",
+        "power": "§fRespawn : &available&",
+        "available": "§2Disponible",
+        "unavailable": "§cIndisponible",
+        "target_not_defined_yet": "",
+        "target": "§fCible : §b%player%",
+        "target_reveal": "§fVotre cible est §b&player&",
+        "get_killed": "§fVous vous êtes fait tuer par votre cible. Vous gagner donc les effets suivants jusque la fin de la partie : §b"
+      }
+    },
+    "timers": {
+      "bouffon": "§fRévélation de la cible du bouffon"
     }
   }
 }
