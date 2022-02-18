@@ -30,6 +30,12 @@
     },
     "timers": {
       "bouffon": "§fRévélation de la cible du bouffon"
+    },
+    "scenarios": {
+      "safeminers": {
+        "name": "Safeminers",
+        "mining_end": "§fLe minage est terminé, les dégâts en dessous de la couche 30 seront réactivés dans 15 secondes"
+      }
     }
   }
 }

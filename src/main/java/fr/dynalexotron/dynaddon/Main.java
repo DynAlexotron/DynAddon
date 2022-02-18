@@ -3,15 +3,13 @@ package fr.dynalexotron.dynaddon;
 import fr.dynalexotron.dynaddon.commands.Near;
 import fr.dynalexotron.dynaddon.commands.TpLoin;
 import fr.dynalexotron.dynaddon.roles.Bouffon;
+import fr.dynalexotron.dynaddon.scenarios.SafeMiners;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.enums.Category;
 import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.enums.TimerBase;
 import fr.ph1lou.werewolfapi.events.roles.elder.ElderResurrectionEvent;
-import fr.ph1lou.werewolfapi.registers.impl.AddonRegister;
-import fr.ph1lou.werewolfapi.registers.impl.CommandRegister;
-import fr.ph1lou.werewolfapi.registers.impl.RoleRegister;
-import fr.ph1lou.werewolfapi.registers.impl.TimerRegister;
+import fr.ph1lou.werewolfapi.registers.impl.*;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegisterManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +39,10 @@ public class Main extends JavaPlugin {
                 .setRoleTimer("dynaddon.roles.bouffon.name")
                 .setDefaultValue(5*60)
                 .addPredicate(api -> api.getConfig().getTimerValue(TimerBase.ROLE_DURATION.getKey()) < 0 && !api.getConfig().isTrollSV())
+        );
+
+        registerManager.registerScenario(new ScenarioRegister(this.addonKey, "dynaddon.scenarios.safeminers.name", new SafeMiners(ww, this))
+                .setDefaultValue()
         );
 
         registerManager.registerAdminCommands(new CommandRegister(this.addonKey, "dynaddon.commands.tploin.name", new TpLoin())
