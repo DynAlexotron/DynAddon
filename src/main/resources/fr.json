@@ -2,7 +2,11 @@
   "dynaddon": {
     "name": "DynAddon",
     "commands": {
-
+      "tploin": {
+        "name": "tploin",
+        "sender_message": "§fVous avez téléporté aléatoirement §6&player& §fsur la carte",
+        "target_message": "§fVous avez été téléporté aléatoirement sur la carte par un staff"
+      }
     }
   }
 }
