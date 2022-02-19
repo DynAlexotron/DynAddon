@@ -50,7 +50,7 @@ public class Bouffon extends RoleNeutral implements IPower, IAffectedPlayers {
     public @NotNull String getDescription() {
         return new DescriptionBuilder(this.game, this)
                 .setDescription(this.game.translate("dynaddon.roles.bouffon.description"))
-                .setPower(this.game.translate("dynaddon.roles.bouffon.power", Formatter.format("&available&", this.game.translate(this.hasPower() ? "dynaddon.roles.bouffon.avaiable" : "dynaddon.roles.bouffon.unavailable"))))
+                .setPower(this.game.translate("dynaddon.roles.bouffon.power", Formatter.format("&available&", this.game.translate(this.hasPower() ? "dynaddon.roles.bouffon.available" : "dynaddon.roles.bouffon.unavailable"))))
                 .addExtraLines(this.game.translate(this.target == null ? "dynaddon.roles.bouffon.target_not_defined_yet" : "dynaddon.roles.bouffon.target", Formatter.player(this.target == null ? "" : this.target.getName())))
                 .build();
     }
@@ -66,7 +66,7 @@ public class Bouffon extends RoleNeutral implements IPower, IAffectedPlayers {
         if(availablePlayers.isEmpty()) return;
 
         this.target = availablePlayers.get(new Random().nextInt(availablePlayers.size()));
-        this.getPlayerWW().sendMessageWithKey("dynaddon.roles.bouffon.target_reveal", Formatter.player(this.target.getName()));
+        this.getPlayerWW().sendMessageWithKey(Prefix.ORANGE.getKey(), "dynaddon.roles.bouffon.target_reveal", Formatter.player(this.target.getName()));
     }
 
     @EventHandler

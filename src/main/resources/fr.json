@@ -11,7 +11,7 @@
       "near": {
         "name": "near",
         "no_players": "§fIl n'y a pas de joueurs à moins de §b&distance& §fblocs",
-        "list_title": "§fListe des joueurs à moins de §b&size& §fblocs :",
+        "list_title": "§fListe des joueurs à moins de §b&number& §fblocs :",
         "player": "§b&player& §f: §b&number& blocs"
       }
     },
@@ -29,7 +29,7 @@
       }
     },
     "timers": {
-      "bouffon": "§fRévélation de la cible du bouffon"
+      "bouffon": "§fRévélation de la cible du bouffon (§b&timer&§r)"
     },
     "scenarios": {
       "safeminers": {

@@ -17,6 +17,7 @@ public class Near implements ICommand {
         int d = 100;
 
         List<IPlayerWW> players = game.getPlayersWW().stream()
+                .filter(pWW -> !pWW.getUUID().equals(player.getUniqueId()))
                 .filter(pWW -> pWW.isState(StatePlayer.ALIVE))
                 .filter(pWW -> pWW.getLocation().distance(player.getLocation()) <= d)
                 .collect(Collectors.toList());
