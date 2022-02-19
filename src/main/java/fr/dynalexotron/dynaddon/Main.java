@@ -4,8 +4,11 @@ import fr.dynalexotron.dynaddon.commands.Near;
 import fr.dynalexotron.dynaddon.commands.TpLoin;
 import fr.dynalexotron.dynaddon.roles.Bouffon;
 import fr.dynalexotron.dynaddon.scenarios.SafeMiners;
+import fr.dynalexotron.dynaddon.scenarios.Timber;
+import fr.dynalexotron.dynaddon.scenarios.TimberPvp;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.enums.Category;
+import fr.ph1lou.werewolfapi.enums.ScenariosBase;
 import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.enums.TimerBase;
 import fr.ph1lou.werewolfapi.events.roles.elder.ElderResurrectionEvent;
@@ -41,8 +44,15 @@ public class Main extends JavaPlugin {
                 .addPredicate(api -> api.getConfig().getTimerValue(TimerBase.ROLE_DURATION.getKey()) < 0 && !api.getConfig().isTrollSV())
         );
 
+        registerManager.getScenariosRegister().removeIf(sc -> sc.getKey().equalsIgnoreCase(ScenariosBase.TIMBER.getKey()));
         registerManager.registerScenario(new ScenarioRegister(this.addonKey, "dynaddon.scenarios.safeminers.name", new SafeMiners(ww, this))
                 .setDefaultValue()
+        );
+        registerManager.registerScenario(new ScenarioRegister(this.addonKey, "dynaddon.scenarios.timber.name", new Timber(ww))
+                .addIncompatibleScenario("dynaddon.scenarios.timber_pvp.name")
+        );
+        registerManager.registerScenario(new ScenarioRegister(this.addonKey, "dynaddon.scenarios.timber_pvp.name", new TimberPvp(ww))
+                .addIncompatibleScenario("dynaddon.scenarios.timber.name")
         );
 
         registerManager.registerAdminCommands(new CommandRegister(this.addonKey, "dynaddon.commands.tploin.name", new TpLoin())
