@@ -25,6 +25,7 @@ public class SafeMiners extends ListenerManager {
         this.damageEnabled = false;
     }
 
+    @EventHandler
     public void onMiningEnd(DiggingEndEvent event) {
         Bukkit.broadcastMessage(this.getGame().translate(Prefix.ORANGE.getKey(), "dynaddon.scenarios.safeminers.mining_end"));
         Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
@@ -35,6 +36,7 @@ public class SafeMiners extends ListenerManager {
         }, 20*15);
     }
 
+    @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
         if(!(event.getEntity() instanceof Player)) return;
         if(event.getCause() == EntityDamageEvent.DamageCause.SUICIDE || event.getCause() == EntityDamageEvent.DamageCause.VOID || event.getCause() == EntityDamageEvent.DamageCause.CUSTOM) return;

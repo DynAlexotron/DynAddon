@@ -5,14 +5,11 @@ plugins {
 }
 
 group 'fr.dynalexotron.dynaddon'
-version '1.5.1'
+version '1.5.2'
 
 repositories {
     mavenCentral()
     mavenLocal()
-    maven {
-        url "https://maven.enginehub.org/repo/"
-    }
     maven {
         url 'https://jitpack.io'
     }
