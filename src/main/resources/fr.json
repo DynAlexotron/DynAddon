@@ -41,6 +41,9 @@
       },
       "timber_pvp": {
         "name": "TimberPVP"
+      },
+      "no_alternate_stones": {
+        "name": "No Alternate Stones"
       }
     }
   }

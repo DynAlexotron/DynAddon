@@ -6,6 +6,7 @@ import fr.dynalexotron.dynaddon.enums.ECommands;
 import fr.dynalexotron.dynaddon.enums.ERoles;
 import fr.dynalexotron.dynaddon.enums.EScenarios;
 import fr.dynalexotron.dynaddon.roles.Bouffon;
+import fr.dynalexotron.dynaddon.scenarios.NoAlternateStones;
 import fr.dynalexotron.dynaddon.scenarios.SafeMiners;
 import fr.dynalexotron.dynaddon.scenarios.Timber;
 import fr.dynalexotron.dynaddon.scenarios.TimberPvp;
@@ -58,6 +59,9 @@ public class Main extends JavaPlugin {
         );
         registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.TIMBERPVP.getKey(), new TimberPvp(ww))
                 .addIncompatibleScenario(EScenarios.TIMBER.getKey())
+                .addLoreKey("dynaddon.dev_by")
+        );
+        registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.NOALTERNATESTONES.getKey(), new NoAlternateStones(ww))
                 .addLoreKey("dynaddon.dev_by")
         );
 
