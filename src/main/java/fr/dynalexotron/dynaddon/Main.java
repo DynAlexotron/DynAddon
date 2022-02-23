@@ -22,9 +22,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
     private final String addonKey = "dynaddon.name";
+    private static Main instance;
 
     @Override
     public void onEnable() {
+        instance = this;
+
         GetWereWolfAPI ww = getServer().getServicesManager().load(GetWereWolfAPI.class);
         IRegisterManager registerManager = ww.getRegisterManager();
 
@@ -77,5 +80,9 @@ public class Main extends JavaPlugin {
                 .addStateWW(StateGame.GAME)
                 .setDescription(ww.getWereWolfAPI().translate("dynaddon.dev_by"))
         );
+    }
+
+    public static Main getInstance() {
+        return instance;
     }
 }
