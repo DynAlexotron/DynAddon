@@ -11,10 +11,7 @@ import fr.dynalexotron.dynaddon.scenarios.SafeMiners;
 import fr.dynalexotron.dynaddon.scenarios.Timber;
 import fr.dynalexotron.dynaddon.scenarios.TimberPvp;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
-import fr.ph1lou.werewolfapi.enums.Category;
-import fr.ph1lou.werewolfapi.enums.ScenariosBase;
-import fr.ph1lou.werewolfapi.enums.StateGame;
-import fr.ph1lou.werewolfapi.enums.TimerBase;
+import fr.ph1lou.werewolfapi.enums.*;
 import fr.ph1lou.werewolfapi.registers.impl.*;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegisterManager;
 import org.bukkit.Bukkit;
@@ -48,23 +45,6 @@ public class Main extends JavaPlugin {
                 .setRoleTimer(ERoles.BOUFFON.getKey())
                 .setDefaultValue(5*60)
                 .addPredicate(api -> api.getConfig().getTimerValue(TimerBase.ROLE_DURATION.getKey()) < 0 && !api.getConfig().isTrollSV())
-                .addLoreKey("dynaddon.dev_by")
-        );
-
-        registerManager.getScenariosRegister().removeIf(sc -> sc.getKey().equalsIgnoreCase(ScenariosBase.TIMBER.getKey()));
-        registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.SAFEMINERS.getKey(), new SafeMiners(ww, this))
-                .setDefaultValue()
-                .addLoreKey("dynaddon.dev_by")
-        );
-        registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.TIMBER.getKey(), new Timber(ww))
-                .addIncompatibleScenario(EScenarios.TIMBERPVP.getKey())
-                .addLoreKey("dynaddon.dev_by")
-        );
-        registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.TIMBERPVP.getKey(), new TimberPvp(ww))
-                .addIncompatibleScenario(EScenarios.TIMBER.getKey())
-                .addLoreKey("dynaddon.dev_by")
-        );
-        registerManager.registerScenario(new ScenarioRegister(this.addonKey, EScenarios.NOALTERNATESTONES.getKey(), new NoAlternateStones(ww))
                 .addLoreKey("dynaddon.dev_by")
         );
 
